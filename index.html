@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Feliz Día, Mi Amor</title>
+    <title>Para la mujer mas hermosa</title>
     <style>
         * {
             box-sizing: border-box;
@@ -59,7 +59,7 @@
     <!-- Pantalla de Inicio -->
     <div id="intro">
         <div class="flower-pulse">🌻</div>
-        <div class="toca-texto">Toca la pantalla para iniciar con música 💛</div>
+        <div class="toca-texto">Un regalo especial... Toca la flor.</div>
     </div>
 
     <!-- Reproductor de audio local -->
@@ -191,7 +191,6 @@
         photoCanvas.height = 512;
         const pCtx = photoCanvas.getContext('2d');
 
-        // Función que dibuja el marco redondo (negro o con la foto ajustada)
         function renderizarCentro(img = null) {
             pCtx.clearRect(0, 0, 512, 512);
 
@@ -201,7 +200,6 @@
             pCtx.fillStyle = '#000000';
             pCtx.fill();
 
-            // Si la imagen existe, la recorta y centra sin deformar
             if (img) {
                 pCtx.clip();
                 const aspect = img.width / img.height;
@@ -221,7 +219,6 @@
             }
             pCtx.restore();
 
-            // Borde circular amarillo dorado
             pCtx.beginPath();
             pCtx.arc(256, 256, 238, 0, Math.PI * 2);
             pCtx.strokeStyle = '#ffea00';
@@ -229,13 +226,12 @@
             pCtx.stroke();
         }
 
-        // Render inicial (Círculo negro por defecto)
         renderizarCentro(null);
 
         const photoTex = new THREE.CanvasTexture(photoCanvas);
         const photoMat = new THREE.SpriteMaterial({ 
             map: photoTex, 
-            transparent: true, // Evita la aparicion del marco negro rectangular
+            transparent: true,
             depthTest: true 
         });
         const photoSprite = new THREE.Sprite(photoMat);
@@ -243,7 +239,6 @@
         photoSprite.position.set(0, 0, 2);
         scene.add(photoSprite);
 
-        // Carga dinámica de pareja.jpg
         const parejaImg = new Image();
         parejaImg.src = 'pareja.jpg';
         parejaImg.onload = function() {
@@ -317,8 +312,8 @@
             return sprite;
         }
 
-        // Título Principal
-        const tituloSprite = createTextSprite('Feliz Día, Mi Amor 💛', 38, true);
+        // Título Principal modificado
+        const tituloSprite = createTextSprite('para la mujer mas hermosa', 38, true);
         tituloSprite.position.set(0, 48, 0);
         scene.add(tituloSprite);
 
